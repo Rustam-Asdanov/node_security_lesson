@@ -7,7 +7,9 @@ const loginPage = (req, res) => {
 const loginUser = async (req, res) => {
   await findUser(req.body)
     .then((response) => {
-      console.log(response);
+      if (response.password === req.body.password) {
+        res.redirect("/main/secrets");
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -22,6 +24,7 @@ const createUser = async (req, res) => {
   await addUser(req.body)
     .then((response) => {
       console.log(response);
+      res.redirect("/main/secrets");
     })
     .catch((err) => {
       console.log(err);
