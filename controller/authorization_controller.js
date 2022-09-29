@@ -1,3 +1,4 @@
+const md5 = require("md5");
 const { addUser, findUser } = require("../service/authorization_service");
 
 const loginPage = (req, res) => {
@@ -7,7 +8,7 @@ const loginPage = (req, res) => {
 const loginUser = async (req, res) => {
   await findUser(req.body)
     .then((response) => {
-      if (response.password === req.body.password) {
+      if (response.password === md5(req.body.password)) {
         res.redirect("/main/secrets");
       }
     })
@@ -21,6 +22,8 @@ const registrationPage = (req, res) => {
 };
 
 const createUser = async (req, res) => {
+  const body = req.body;
+  body.password = md5(body.password);
   await addUser(req.body)
     .then((response) => {
       res.redirect("/main/secrets");
