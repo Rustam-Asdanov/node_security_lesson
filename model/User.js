@@ -9,14 +9,9 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-// userSchema.plugin(encrypt, {
-//   secret: process.env.SECRET,
-//   encryptedFields: ["password"],
-// });
-
 // 5
 userSchema.plugin(passportLocalMongoose);
-const User = mongoose.model("User", userSchema);
+const User = new mongoose.model("User", userSchema);
 
 // 6
 passport.serializeUser(User.serializeUser());

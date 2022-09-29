@@ -3,7 +3,12 @@ const mainPage = (req, res) => {
 };
 
 const secretPage = (req, res) => {
-  res.render("secrets");
+  console.log(req.isAuthenticated());
+  if (req.isAuthenticated()) {
+    res.render("secrets");
+  } else {
+    res.redirect("/login");
+  }
 };
 
 module.exports = {

@@ -1,12 +1,8 @@
 const User = require("../model/User");
 
+//
 const addUser = (user) => {
-  const newUser = new User({
-    email: user.username,
-    password: user.password,
-  });
-
-  return newUser.save();
+  return User.register({ username: user.username }, user.password);
 };
 
 const findUser = (user) => {
