@@ -1,3 +1,4 @@
+require("dotenv").config();
 // require
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -7,7 +8,6 @@ const authorization_router = require("./router/authorization_router");
 
 // configuration
 const app = express();
-require("dotenv").config();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = 3000;

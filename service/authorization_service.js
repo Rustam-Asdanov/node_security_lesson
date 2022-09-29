@@ -1,7 +1,6 @@
 const User = require("../model/User");
 
 const addUser = (user) => {
-  console.log("my user " + user.password);
   const newUser = new User({
     email: user.username,
     password: user.password,

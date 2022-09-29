@@ -23,7 +23,6 @@ const registrationPage = (req, res) => {
 const createUser = async (req, res) => {
   await addUser(req.body)
     .then((response) => {
-      console.log(response);
       res.redirect("/main/secrets");
     })
     .catch((err) => {
